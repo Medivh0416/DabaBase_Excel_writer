@@ -35,7 +35,7 @@ public class JDBCWraper implements DataSource {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			for (int i = 0; i < 3; i++) {
-				Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test");
+				Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/contacts");
 				conn = new MyConnection(conn);
 				pool.add(conn);
 			}

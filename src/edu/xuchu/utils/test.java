@@ -1,5 +1,7 @@
 package edu.xuchu.utils;
 import java.io.File;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -14,10 +16,16 @@ public class test {
 	@Test
 	public void test() throws Exception{
 		JDBCWraper jdbc=new JDBCWraper();
-
-		System.out.println(jdbc.getConnection());
-		System.out.println(jdbc.getConnection());
-		jdbc.getConnection().close();
+		Connection conn=jdbc.getConnection();
+		String sql="insert into users values(?,?,?)";
+		PreparedStatement state=conn.prepareStatement(sql);
+		for(int i=4;i<103;i++){
+			state.setString(1, "U00"+i);
+			state.setString(2, "Jim");
+			state.setString(3, "ffgss");
+			System.out.println(state.executeUpdate());
+		}
+		
 	}
 	
 	@Test
@@ -30,13 +38,16 @@ public class test {
 		DataSource ds=DBCPUtils.getDataSource();
 		System.out.println(ds.getConnection());
 		QueryRunner qr=new QueryRunner(ds);
-//		String sql = "insert into users values('U004','李四','888')";
-//		qr.update(sql);
-		String sql ="SELECT * FROM users";
-		List<User> list=qr.query(sql, new BeanListHandler<User>(User.class));
-		for(User u:list){
-			System.out.println(u);
+		for(int i=5;i<104;i++){
+			String sql = "insert into users values('U00"+i+"','李四"+i+"','888')";
+			qr.update(sql);
 		}
+
+//		String sql ="SELECT * FROM users";
+//		List<User> list=qr.query(sql, new BeanListHandler<User>(User.class));
+//		for(User u:list){
+//			System.out.println(u);
+//		}
 	}
 	
 	@Test

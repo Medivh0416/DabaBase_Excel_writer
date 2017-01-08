@@ -9,6 +9,11 @@
     <servlet-name>ContactServlet</servlet-name>
     <servlet-class>edu.xuchu.contact.servlet.ContactServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ShowUser</servlet-name>
+    <servlet-class>edu.xuchu.user.servlet.ShowUser</servlet-class>
+  </servlet>
+
 
 
   <servlet-mapping>
@@ -18,6 +23,10 @@
   <servlet-mapping>
     <servlet-name>ContactServlet</servlet-name>
     <url-pattern>/ContactServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShowUser</servlet-name>
+    <url-pattern>/ShowUser</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

@@ -53,5 +53,13 @@ public class Contact {
 		this.addr = addr;
 		this.uid = uid;
 	}
+	@Override
+	public String toString() {
+		return "Contact [id=" + id + ", name=" + name + ", sex=" + sex + ", tel=" + tel + ", addr=" + addr + ", uid="
+				+ uid + "]";
+	}
+	public Contact() {
+		super();
+	}
 	
 }
