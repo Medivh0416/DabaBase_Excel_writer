@@ -13,8 +13,10 @@
     <servlet-name>ShowUser</servlet-name>
     <servlet-class>edu.xuchu.user.servlet.ShowUser</servlet-class>
   </servlet>
-
-
+  <servlet>
+    <servlet-name>ShowSession</servlet-name>
+    <servlet-class>edu.xuchu.user.servlet.ShowSession</servlet-class>
+  </servlet>
 
   <servlet-mapping>
     <servlet-name>UserServlet</servlet-name>
@@ -28,6 +30,13 @@
     <servlet-name>ShowUser</servlet-name>
     <url-pattern>/ShowUser</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShowSession</servlet-name>
+    <url-pattern>/ShowSession</url-pattern>
+  </servlet-mapping>
+  <listener>
+  <listener-class>edu.xuchu.listener.SessionListener</listener-class>
+  </listener>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>

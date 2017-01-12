@@ -46,6 +46,9 @@
 			</tr>
 		</table>
 	</form>
+	<hr>
+	<c:url value="/ShowSession" var="login"></c:url>
+	Back to <a href=${login}>LOGIN</a>
 	<br>
 	</div>
 </body>

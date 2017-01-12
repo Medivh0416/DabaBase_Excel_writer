@@ -19,23 +19,50 @@
 <body>
 
 	<c:url value="/UserServlet" var="user"></c:url>
-	<form action="${user}?cmd=login" method="post">
-		<table>
-			<tr>
-				<th colspan="2">Please Login</th>
-			</tr>
-			<tr>
-				<td>NAME</td>
-				<td><input type="text" name="name" /></td>
-			</tr>
-			<tr>
-				<td>PassWord</td>
-				<td><input type="text" name="pwd"></td>
-			</tr>
-			<tr>
-				<td><input type="submit"></td>
-			</tr>
-		</table>
-	</form>
+	<c:choose>
+		<c:when test="${empty sessionScope.user}">
+			<form action='${user}?cmd=login' method="post">
+				<table>
+					<tr>
+						<th colspan="2">Please Login</th>
+					</tr>
+					<tr>
+						<td>NAME</td>
+						<td><input type="text" name="name" /></td>
+					</tr>
+					<tr>
+						<td>PassWord</td>
+						<td><input type="text" name="pwd"></td>
+					</tr>
+					<tr>
+						<td><input type="submit"></td>
+					</tr>
+				</table>
+			</form>
+		</c:when>
+		<c:otherwise>
+			<table>
+				<tr>
+					<th>SessionId</th>
+					<th>UserId</th>
+					<th>UserName</th>
+					<th>UserPwd</th>
+					<th>Time</th>
+					<th>Delete</th>
+				</tr>
+				<c:forEach items="${UserList}" var="list">
+					<tr>
+						<th> ${list.SessionId} </th>
+						<th> ${list.UserId} </th>
+						<th> ${list.UserName} </th>
+						<th> ${list.UserPwd} </th>
+						<th> ${list.Time} </th>
+						<c:url value="/ShowSession?sessionid=${list.SessionId}" var="delete"></c:url>
+						<th><a href='${delete}'> Delete </a></th>
+					</tr>
+				</c:forEach>
+			</table>
+		</c:otherwise>
+	</c:choose>
 </body>
 </html>
